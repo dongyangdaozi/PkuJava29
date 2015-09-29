@@ -1,3 +1,7 @@
 My name is Dengsong.
 add a new branch.
+<<<<<<< HEAD
 Create a branch is quick and simple.
+=======
+Create a new branch is quick .
+>>>>>>> feature1
