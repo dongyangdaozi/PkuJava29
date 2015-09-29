@@ -6,3 +6,4 @@ Create a branch is quick and simple.
 Create a new branch is quick .
 >>>>>>> feature1
 add merge!!!
+test history
