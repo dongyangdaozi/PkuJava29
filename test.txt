@@ -1,2 +1,3 @@
 My name is Dengsong.
 add a new branch.
+Create a branch is quick and simple.
