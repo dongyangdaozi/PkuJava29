@@ -1,0 +1,51 @@
+public class Solution {
+  
+	
+    public  int myAtoi(String str) {
+    	  int i=0;
+    	
+    	char st[]=str.toCharArray();
+    	
+    	if(str.length()==0){
+    		return 0;
+    	}
+    	
+    	
+    	while(ist.length&&st[i]==' '){
+    		
+    			i=i+1;
+    			}
+    		
+    	
+    	
+    	int flag=1;
+    	if(st[i]=='+'){
+    		i++;
+    		
+    		
+    		}
+    		else
+    			if(st[i]=='-')
+    				{ flag=-1;i++;}
+    		
+    		int sum=0;
+    		while(ist.length){
+    		if((st[i]-'0')0(st[i]-'0')9){
+    			return flagsum;
+    		}
+    		if(Integer.MAX_VALUE  10sum(Integer.MAX_VALUE  10 == sum   
+                    && (st[i] - '0')  Integer.MAX_VALUE % 10))
+    			{return flag==1 Integer.MAX_VALUEInteger.MIN_VALUE;
+    			
+    			}
+    	sum=10sum+st[i]-'0';
+    	i++;
+    	
+    		}
+    		return flagsum;
+    	}
+		
+		
+    	
+    	
+}
