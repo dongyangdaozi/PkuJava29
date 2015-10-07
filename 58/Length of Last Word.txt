@@ -1,0 +1,39 @@
+public class Solution {
+
+public static int lengthOfLastWord(String s) {
+        char sin[]=s.toCharArray();
+        int len=s.length();
+        int count=0;
+        int i=len-1;
+        for(int j=i;j>=0;j--){
+        if(!((sin[i]>='a'&&sin[i]<='z')||(sin[i]>='A'&&sin[i]<='Z'))){
+        		i--;
+        	}else break;
+        }
+     //   while(true){
+        	//i=len-1;
+        //	if((sin[i]<'a'||sin[i]>'z'))
+        	//	if((sin[i]<'A'||sin[i]>'Z'))
+        	//	{i--;}
+        	//else
+        	//	break;
+      //  }
+        for(int j=i;j>=0;j--){
+        	//if((sin[i]>'a'&&sin[i]<'z')||(sin[i]>'A'&&sin[i]<'Z'))
+        	if((sin[j]!=' ')){
+        		count++;
+        		
+        	}
+        	else 
+        		break;
+        	
+        	
+        	
+        }
+      
+        	
+        	return count;
+        	
+        
+}
+    }
