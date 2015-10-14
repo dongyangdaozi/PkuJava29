@@ -1,0 +1,26 @@
+public class Solution {
+    public int reverse(int x) {
+        int sum=0;
+        int flag;
+        StringBuffer buff=new StringBuffer();
+        String str=new String();
+        if(x==-2147483648||x==0)return 0;
+        if(x<0){
+            flag=-1;
+            x=(-1)*x;
+        }
+        else flag=1;
+        while(x>0){
+            buff.append(x%10);
+            x/=10;
+        }
+        str=buff.toString();
+        if(str.length()==10&&flag==-1&&str.compareTo("2147483648")>0)return 0;
+        if(str.length()==10&&flag==1&&str.compareTo("2147483647")>0)return 0;
+        for(int i=0;i<str.length();i++){
+            sum=sum*10+str.charAt(i)-'0';
+        //return flag*sum;
+        }
+        return flag*sum;
+    }
+}
