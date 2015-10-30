@@ -143,304 +143,75 @@ public class GobangGame {
 	/**
 	 * 计算机随机下棋
 	 */
-	/*public int[] computerDo() {
-        
+public int[] computerDo() {
 		
-	int i=posX;
-	int j=posY;
-	int[] result2=new int[2];
-	String ico = Chessman.BLACK.getChessman();
-	String[][] board=chessboard.getBoard();
-	int count ;
-	int max=0;
-	int flag=1;
-	{
-	    count=1;
-	    i=posX+1;
-	    j=posY+1;
-	    while(i>=0&&i<Chessboard.BOARD_SIZE&&j>=0&&j<Chessboard.BOARD_SIZE&&board[i][j].equals(ico)){
-	        count++;
-			if(max<count){max=count;flag=1;}
-		    i++;j++;
-	    }
-		i=posX-1;
-	    j=posY-1;
-	    while(i>=0&&i<Chessboard.BOARD_SIZE&&j>=0&&j<Chessboard.BOARD_SIZE&&board[i][j].equals(ico)){
-	        count++;
-		    if(max<count){max=count;flag=5;}
-		    i--;j--;
-	    }
-    }
-	{
-	    count=1;
-	    i=posX+1;
-	    j=posY-11;
-	    while(i>=0&&i<Chessboard.BOARD_SIZE&&j>=0&&j<Chessboard.BOARD_SIZE&&board[i][j].equals(ico)){
-	        count++;
-		    if(max<count){max=count;flag=3;}
-		    i++;j--;
-	    }
-		i=posX-1;
-	    j=posY+1;
-	    while(i>=0&&i<Chessboard.BOARD_SIZE&&j>=0&&j<Chessboard.BOARD_SIZE&&board[i][j].equals(ico)){
-	        count++;
-		    if(max<count){max=count;flag=7;}
-		    i--;j++;
-	    }
-    }
-	{
-	    count=1;
-	    i=posX+1;
-	    j=posY;
-	    while(i>=0&&i<Chessboard.BOARD_SIZE&&j>=0&&j<Chessboard.BOARD_SIZE&&board[i][j].equals(ico)){
-	        count++;
-		    if(max<count){max=count;flag=2;}
-		    i++;
-	    }
-		i=posX-1;
-	    j=posY;
-	    while(i>=0&&i<Chessboard.BOARD_SIZE&&j>=0&&j<Chessboard.BOARD_SIZE&&board[i][j].equals(ico)){
-	        count++;
-		    if(max<count){max=count;flag=6;}
-		    i--;
-	    }
-    }
-	{
-	    count=1;
-	    i=posX;
-	    j=posY+1;
-	    while(i>=0&&i<Chessboard.BOARD_SIZE&&j>=0&&j<Chessboard.BOARD_SIZE&&board[i][j].equals(ico)){
-	        count++;
-		    if(max<count){max=count;flag=8;}
-		    j++;
-	    }
-		i=posX;
-	    j=posY-1;
-	    while(i>=0&&i<Chessboard.BOARD_SIZE&&j>=0&&j<Chessboard.BOARD_SIZE&&board[i][j].equals(ico)){
-	        count++;
-		    if(max<count){max=count;flag=4;};
-		    j--;
-	    }
-    }
-	switch(flag){
-	    case 1:
-		    if(i-1>=0&&i-1<Chessboard.BOARD_SIZE&&j-1>=0&&j-1<Chessboard.BOARD_SIZE&&board[i][j].equals("十")){
-			    posX=i-1;
-				posY=j-1;
-				int []result = { posX, posY };result2=result;
-	           // return result;
-			}
-			else{
-			    posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	            posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	           // String[][] board = chessboard.getBoard();
-	            while (board[posX][posY] != "十") {
-		            posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-		            posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	            }
-	            int[] result = { posX, posY };result2=result;
-	           // return result;
-			}
-			break;
-		case 2:
-		    if(i-1>=0&&i-1<Chessboard.BOARD_SIZE&&j>=0&&j<Chessboard.BOARD_SIZE&&board[i][j].equals("十")){
-			    posX=i-1;
-				int[] result = { posX, posY };result2=result;
-	           // return result;
-			}
-			else{
-			    posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	            posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	           // String[][] board = chessboard.getBoard();
-	            while (board[posX][posY] != "十") {
-		            posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-		            posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	            }
-	            int[] result = { posX, posY };result2=result;
-	           // return result;
-			}
-			break;
-		case 3:
-		    if(i-1>=0&&i-1<Chessboard.BOARD_SIZE&&j+1>=0&&j+1<Chessboard.BOARD_SIZE&&board[i][j].equals("十")){
-			    posX=i-1;
-				posY=j+1;
-				int[] result = { posX, posY };result2=result;
-	          //  return result;
-			}
-			else{
-			    posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	            posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	         //   String[][] board = chessboard.getBoard();
-	            while (board[posX][posY] != "十") {
-		            posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-		            posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	            }
-	            int[] result = { posX, posY };result2=result;
-	           // return result;
-			}
-			break;
-		case 4:
-		    if(i>=0&&i<Chessboard.BOARD_SIZE&&j+1>=0&&j-1<Chessboard.BOARD_SIZE&&board[i][j].equals("十")){
-				posY=j+1;
-				int[] result = { posX, posY };result2=result;
-	           // return result;
-			}
-			else{
-			    posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	            posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	        //    String[][] board = chessboard.getBoard();
-	            while (board[posX][posY] != "十") {
-		            posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-		            posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	            }
-	            int[] result = { posX, posY };result2=result;
-	           // return result;
-			}
-			break;
-		case 5:
-		    if(i+1>=0&&i+1<Chessboard.BOARD_SIZE&&j+1>=0&&j+1<Chessboard.BOARD_SIZE&&board[i][j].equals("十")){
-			    posX=i+1;
-				posY=j+1;
-				int[] result = { posX, posY };result2=result;
-	           // return result;
-			}
-			else{
-			    posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	            posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	         //   String[][] board = chessboard.getBoard();
-	            while (board[posX][posY] != "十") {
-		            posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-		            posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	            }
-	            int[] result = { posX, posY };result2=result;
-	           // return result;
-			}
-			break;
-		case 6:
-		    if(i+1>=0&&i+1<Chessboard.BOARD_SIZE&&j>=0&&j<Chessboard.BOARD_SIZE&&board[i][j].equals("十")){
-			    posX=i+1;
-				int[] result = { posX, posY };result2=result;
-	          //  return result;
-			}
-			else{
-			    posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	            posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	           // String[][] board = chessboard.getBoard();
-	            while (board[posX][posY] != "十") {
-		            posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-		            posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	            }
-	            int[] result = { posX, posY };result2=result;
-	          //  return result;
-			}
-			break;
-		case 7:
-		    if(i+1>=0&&i+1<Chessboard.BOARD_SIZE&&j-1>=0&&j-1<Chessboard.BOARD_SIZE&&board[i][j].equals("十")){
-			    posX=i+1;
-				posY=j-1;
-				int[] result = { posX, posY };result2=result;
-	          //  return result;
-			}
-			else{
-			    posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	            posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	          //  String[][] board = chessboard.getBoard();
-	            while (board[posX][posY] != "十") {
-		            posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-		            posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	            }
-	            int[] result = { posX, posY };result2=result;
-	            //return result;
-			}
-			break;
-		case 8:
-		    if(i>=0&&i<Chessboard.BOARD_SIZE&&j-1>=0&&j-1<Chessboard.BOARD_SIZE&&board[i][j].equals("十")){
-				posY=j-1;
-				int[] result = { posX, posY };result2=result;
-	          //  return result;
-			}
-			else{
-			    posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	            posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	          //  String[][] board = chessboard.getBoard();
-	            while (board[posX][posY] != "十") {
-		            posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-		            posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	            }
-	            int[] result = { posX, posY };
-	            result2=result;
-	           // return result;
-			}
-			break;
-		default:
-		        posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	            posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	         //   String[][] board = chessboard.getBoard();
-	            while (board[posX][posY] != "十") {
-		            posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-		            posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-	            }
-	            int[] result = { posX, posY };result2=result;
-	           //return result;
-				break;
-	}
-	return result2;
-}*/
 	
-	
-	public int[] computerDo() {
-		
-		//int posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-		//int posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-		//String[][] board = chessboard.getBoard();
-//		while (board[posX][posY] != "十") {
-//			posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-//			posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-//		}
-//		int[] result = { posX, posY };
 		
 		String[][] board = chessboard.getBoard();
 		String ico = Chessman.BLACK.getChessman();
 		int X=posX;
 		int Y=posY;
-		int up=0;  //上
-		int down=0; //下
-		int left=0; //左
-		int right=0;  //右
-		int zuoshang=0;//左上
-		int zuoxia=0;//左下
-		int youshang=0;//右上
-		int youxia=0;//右下
+		int up=0, down=0,left=0, right=0, left_up=0,left_down=0,right_up=0, right_down=0;
 		
 		int i=1;
-		while(posX-i>=0){  //判断左边
+		while(posX-i>=0){  
+			//判断左边是否为空
 			if(board[posX-i][posY].equals(ico))
 				left++;
 			else
 				break;
 			i++;
 		}
-		
 		i=1;
-		while(posX+i<Chessboard.BOARD_SIZE){   //判断右边
-			if(board[posX+i][posY].equals(ico))
-				right++;
+		while(posX-i>=0 && posY-i>=0){  
+			//判断左上方向是否为空
+			if(board[posX-i][posY-i].equals(ico))
+				left_up++;
 			else
 				break;
 			i++;
 		}
-		
 		i=1;
-		while(posY-i>=0){   //判断竖直向上方向
+		while(posY-i>=0){   
+			//判断竖直向上方向是否为空
 			if(board[posX][posY-i].equals(ico))
 				up++;
 			else
 				break;
 			i++;
 		}
+		i=1;
+		while(posX+i<Chessboard.BOARD_SIZE && posY-i>=0){  
+			//判断右上方向是否为空
+			if(board[posX+i][posY-i].equals(ico))
+				right_up++;
+			else
+				break;
+			i++;
+		}
 		
 		i=1;
-		while(posY+i<Chessboard.BOARD_SIZE){  //判断竖直向下方向
+		while(posX+i<Chessboard.BOARD_SIZE){   
+			//判断右边是否为空
+			if(board[posX+i][posY].equals(ico))
+				right++;
+			else
+				break;
+			i++;
+		}
+		i=1;
+		while(posX+i<Chessboard.BOARD_SIZE && posY+i<Chessboard.BOARD_SIZE){  
+			//判断右下方向是否为空
+			if(board[posX+i][posY+i].equals(ico))
+				right_down++;
+			else
+				break;
+			i++;
+		}
+
+		i=1;
+		while(posY+i<Chessboard.BOARD_SIZE){ 
+			//判断竖直向下方向是否为空
 			if(board[posX][posY+i].equals(ico))
 				down++;
 			else
@@ -448,43 +219,33 @@ public class GobangGame {
 			i++;
 		}
 		
-		i=1;
-		while(posX-i>=0 && posY-i>=0){  //判断左上方向
-			if(board[posX-i][posY-i].equals(ico))
-				zuoshang++;
-			else
-				break;
-			i++;
-		}
+		
 		
 		i=1;
-		while(posX-i>=0 && posY+i<Chessboard.BOARD_SIZE){  //判断左下方向
+		while(posX-i>=0 && posY+i<Chessboard.BOARD_SIZE){ 
+			//判断左下方向是否为空
 			if(board[posX-i][posY+i].equals(ico))
-				zuoxia++;
+				left_down++;
 			else
 				break;
 			i++;
 		}
 		
-		i=1;
-		while(posX+i<Chessboard.BOARD_SIZE && posY-i>=0){  //判断右上方向
-			if(board[posX+i][posY-i].equals(ico))
-				youshang++;
-			else
-				break;
-			i++;
-		}
+		//如果纵向最长则防守
+				if((up+down)>=(left+right) && (up+down)>=(left_up+right_down) && (up+down)>=(left_down+right_up))
+					if(posY-up-1>=0 && board[posX][posY-up-1].equals("十")){
+						X=posX;
+						Y=posY-up-1;
+					}
+					else if(posY+down+1<Chessboard.BOARD_SIZE && board[posX][posY+down+1].equals("十")){
+						X=posX;
+						Y=posY+down+1;
+					}
+					else
+						;
 		
-		i=1;
-		while(posX+i<Chessboard.BOARD_SIZE && posY+i<Chessboard.BOARD_SIZE){  //判断右下方向
-			if(board[posX+i][posY+i].equals(ico))
-				youxia++;
-			else
-				break;
-			i++;
-		}
-		//如果行向最长
-		if((left+right)>=(up+down) && (left+right)>=(zuoshang+youxia) && (left+right)>=(zuoxia+youshang))
+		//如果行向最长则防守
+		if((left+right)>=(up+down) && (left+right)>=(left_up+right_down) && (left+right)>=(left_down+right_up))
 			if(posX-left-1>=0 && board[posX-left-1][posY].equals("十")){
 				 X=posX-left-1;
 				 Y=posY;
@@ -494,51 +255,33 @@ public class GobangGame {
 				Y=posY;
 			}
 			else ;
-//				posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-//				posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-//				while (board[posX][posY] != "十") {
-//					posX = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-//					posY = (int) (Math.random() * (Chessboard.BOARD_SIZE - 1));
-//				}
-//				int[] result = { posX, posY };
+
+		//如果左下到右上最长则防守
+				if((left_down+right_up)>=(left+right) && (left_down+right_up)>=(up+down) && (left_down+right_up)>=(left_up+right_down)){
+					if(posX-left_down-1>=0 && posY+left_down+1<Chessboard.BOARD_SIZE && board[posX-left_down-1][posY+left_down+1].equals("十")){
+						X=posX-left_down-1;
+						Y=posY+left_down+1;
+					}
+					else if(posX+right_up+1<Chessboard.BOARD_SIZE && posY-right_up-1>=0 && board[posX+right_up+1][posY-right_up-1].equals("十")){
+						X=posX+right_up+1;
+						Y=posY-right_up-1;
+					}
+					else
+					    ;
+				}
 				
-		//如果纵向最长
-		if((up+down)>=(left+right) && (up+down)>=(zuoshang+youxia) && (up+down)>=(zuoxia+youshang))
-			if(posY-up-1>=0 && board[posX][posY-up-1].equals("十")){
-				X=posX;
-				Y=posY-up-1;
+		//如果左上到右下最长则防守
+		if((left_up+right_down)>=(left+right) && (left_up+right_down)>=(up+down) && (left_up+right_down)>=(left_down+right_up)){
+			if(posX-left_up-1>=0 && posY-left_up-1>=0 && board[posX-left_up-1][posY-left_up-1].equals("十")){
+				X=posX-left_up-1;
+				Y=posY-left_up-1;
 			}
-			else if(posY+down+1<Chessboard.BOARD_SIZE && board[posX][posY+down+1].equals("十")){
-				X=posX;
-				Y=posY+down+1;
-			}
-			else
-				;
-		//如果左上到右下最长
-		if((zuoshang+youxia)>=(left+right) && (zuoshang+youxia)>=(up+down) && (zuoshang+youxia)>=(zuoxia+youshang)){
-			if(posX-zuoshang-1>=0 && posY-zuoshang-1>=0 && board[posX-zuoshang-1][posY-zuoshang-1].equals("十")){
-				X=posX-zuoshang-1;
-				Y=posY-zuoshang-1;
-			}
-			else if(posX+youxia+1<Chessboard.BOARD_SIZE && posY+youxia+1<Chessboard.BOARD_SIZE && board[posX+youxia+1][posY+youxia+1].equals("十")){
-				X=posX+youxia+1;
-				Y=posY+youxia+1;
+			else if(posX+right_down+1<Chessboard.BOARD_SIZE && posY+right_down+1<Chessboard.BOARD_SIZE && board[posX+right_down+1][posY+right_down+1].equals("十")){
+				X=posX+right_down+1;
+				Y=posY+right_down+1;
 			}
 			else
 				;
-		}
-		//如果左下到右上最长
-		if((zuoxia+youshang)>=(left+right) && (zuoxia+youshang)>=(up+down) && (zuoxia+youshang)>=(zuoshang+youxia)){
-			if(posX-zuoxia-1>=0 && posY+zuoxia+1<Chessboard.BOARD_SIZE && board[posX-zuoxia-1][posY+zuoxia+1].equals("十")){
-				X=posX-zuoxia-1;
-				Y=posY+zuoxia+1;
-			}
-			else if(posX+youshang+1<Chessboard.BOARD_SIZE && posY-youshang-1>=0 && board[posX+youshang+1][posY-youshang-1].equals("十")){
-				X=posX+youshang+1;
-				Y=posY-youshang-1;
-			}
-			else
-			    ;
 		}
 		
 		if(X==posX && Y==posY){
@@ -558,6 +301,9 @@ public class GobangGame {
 		return result;
 	}
 
+
+	
+	
 
 	/**
 	 * 判断输赢
