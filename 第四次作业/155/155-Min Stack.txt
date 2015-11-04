@@ -1,0 +1,67 @@
+public class MinStack {
+
+    private final static int STACK_SIZE = 1000;
+    private int[] stack;
+    private int[] minNum; 
+    private int minInsert = Integer.MAX_VALUE; 
+    private int index = -1; 
+    private int current = -1;
+
+    public MinStack() {
+        stack = new int[STACK_SIZE];
+        minNum = new int[STACK_SIZE];
+    }
+
+    public MinStack(int size) {
+        stack = new int[size];
+        minNum = new int[size];
+    }
+
+    public void push(int x) {
+        current++; 
+
+        if (current >= stack.length) { 
+            int[] tmp = new int[current * 2];
+            System.arraycopy(stack, 0, tmp, 0, stack.length);
+            stack = tmp;
+
+            tmp = new int[current * 2];
+            System.arraycopy(minNum, 0, tmp, 0, minNum.length);
+            minNum = tmp;
+        }
+
+        stack[current] = x; 
+
+        if (x <= minInsert) {
+            minInsert = x;
+            index = current;
+        }
+
+        minNum[current] = index;
+    }
+
+    public void pop() {
+        current--;
+        if (current >= 0) {
+            minInsert = stack[minNum[current]]; 
+            index = minNum[current]; 
+        }
+    }
+
+    public int top() {
+
+        if (current < 0) {
+            throw new RuntimeException("No more data");
+        }
+
+        return stack[current];
+    }
+
+    public int getMin() {
+        if (current < 0) {
+            throw new RuntimeException("No more data");
+        }
+
+        return stack[minNum[current]];
+    }
+}
