@@ -1,0 +1,55 @@
+import java.util.*;
+public class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>>list1 =new ArrayList<List<Integer>>();
+        Arrays.sort(nums);
+        if(nums.length<3)return list1;
+/*
+        for(int i=0;i<nums.length;i++){
+            for(int j=i+1;j<nums.length;j++){
+                for(int k=j+1;k<nums.length;k++){
+                    if(nums[i]+nums[k]+nums[j]==0){
+                        List<Integer>list=new ArrayList<Integer>();
+                        list.add(nums[i]);
+                        list.add(nums[j]);
+                        list.add(nums[k]);
+
+                        list1.add(list);
+                    }
+                }
+            }
+        }
+        return list1;
+*/
+
+        for (int i = 0; i < nums.length - 2; i++) {
+		if (i == 0 || nums[i] > nums[i - 1]) {
+			int start = i + 1;
+			int end = nums.length - 1;
+			while (start < end) {
+				if (nums[start] + nums[end] == -nums[i]) {
+					ArrayList<Integer> list = new ArrayList<Integer>();
+					list.add(nums[i]);
+					list.add(nums[start]);
+					list.add(nums[end]);
+					list1.add(list);
+					start++;
+					end--;
+					while (nums[end] == nums[end + 1]&&start < end)
+						end--;
+ 
+					while ( nums[start] == nums[start - 1]&&start < end )
+						start++;
+				} 
+				else if (nums[start] + nums[end] < -nums[i]) {
+					start++;
+				} else {
+					end--;
+				}
+			}
+ 
+		}
+	}
+	return list1;
+    }
+}
