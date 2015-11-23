@@ -1,4 +1,4 @@
-ï»¿package wordcount;
+package wordcount;
 
 import java.io.*;
 import java.util.HashMap;
@@ -10,40 +10,40 @@ import java.util.StringTokenizer;
  * Created by ASUS on 2015/11/21.
  */
 public class wordcount {
-    public void word(String filepath1,String filepath2){ // wordç”¨æ¥æ±‚å•è¯ä¸ªæ•°ã€‚
+    public void word(String filepath1,String filepath2){ // wordÓÃÀ´Çóµ¥´Ê¸öÊı¡£
        
-        int count1=0;// è®¡æ•°å˜é‡1ç”¨æ¥ç»Ÿè®¡ç¬¬ä¸€ä¸ªæ–‡ä»¶çš„å•è¯æ•°ã€‚
-        int count2=0; // è®¡æ•°å˜é‡2ç”¨æ¥ç»Ÿè®¡ç¬¬äºŒä¸ªæ–‡ä»¶ä¸­çš„å•è¯æ•°ã€‚
+        int count1=0;// ¼ÆÊı±äÁ¿1ÓÃÀ´Í³¼ÆµÚÒ»¸öÎÄ¼şµÄµ¥´ÊÊı¡£
+        int count2=0; // ¼ÆÊı±äÁ¿2ÓÃÀ´Í³¼ÆµÚ¶ş¸öÎÄ¼şÖĞµÄµ¥´ÊÊı¡£
         Map<String,Integer> map=new HashMap<String, Integer>();
-        File file1=new File(filepath1); // æ‰¾åˆ°ç¬¬ä¸€ä¸ªæ–‡ä»¶
-        File file2=new File(filepath2);// æ‰¾åˆ°ç¬¬äºŒä¸ªæ–‡ä»¶
+        File file1=new File(filepath1); // ÕÒµ½µÚÒ»¸öÎÄ¼ş
+        File file2=new File(filepath2);// ÕÒµ½µÚ¶ş¸öÎÄ¼ş
         try {
             BufferedReader reader1=new BufferedReader(new FileReader(file1));
             BufferedReader reader2=new BufferedReader(new FileReader(file2));
-            String templineword=null; // æ¯ä¸€è¡Œè¿›è¡Œå¤„ç†ã€‚ç›´åˆ°è¯¥è¡Œç»“æŸã€‚
+            String templineword=null; // Ã¿Ò»ĞĞ½øĞĞ´¦Àí¡£Ö±µ½¸ÃĞĞ½áÊø¡£
             while ((templineword=reader1.readLine())!=null){  
                 count1+=wordcount(map,templineword);
             }
             while ((templineword=reader2.readLine())!=null){ 
                 count2+=wordcount(map, templineword);
             }
-            reader1.close();// å…³é—­æ–‡ä»¶è¯»
+            reader1.close();// ¹Ø±ÕÎÄ¼ş¶Á
             reader2.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-      // è·å¾—mapçš„è¿­ä»£å™¨ï¼Œç”¨ä½œéå†mapä¸­çš„æ¯ä¸€ä¸ªé”®å€¼å¯¹
+      // »ñµÃmapµÄµü´úÆ÷£¬ÓÃ×÷±éÀúmapÖĞµÄÃ¿Ò»¸ö¼üÖµ¶Ô
         Iterator<Map.Entry<String,Integer>> iterator=map.entrySet().iterator();
-        System.out.println("æ–‡æœ¬ä¸€å•è¯æ•°ï¼š"+count1); // è¾“å‡ºè®¡æ•°ç»“æœ
-        System.out.println("æ–‡æœ¬äºŒå•è¯æ•°ï¼š"+count2); // è¾“å‡ºè®¡æ•°ç»“æœ
+        System.out.println("ÎÄ±¾Ò»µ¥´ÊÊı£º"+count1); // Êä³ö¼ÆÊı½á¹û
+        System.out.println("ÎÄ±¾¶şµ¥´ÊÊı£º"+count2); // Êä³ö¼ÆÊı½á¹û
         while (iterator.hasNext()){  
             Map.Entry<String,Integer> entry=iterator.next();
-            System.out.println("è¯ï¼š"+entry.getKey()+" å‡ºç°ä¸ªæ•°ï¼š"+entry.getValue());
+            System.out.println("´Ê£º"+entry.getKey()+" ³öÏÖ¸öÊı£º"+entry.getValue());
         }
     }
-    public void intersection_word(String filepath1,String filepath2){// æ­¤å‡½æ•°æ±‚å•è¯äº¤é›†ä¸ªæ•°
+    public void intersection_word(String filepath1,String filepath2){// ´Ëº¯ÊıÇóµ¥´Ê½»¼¯¸öÊı
         Map<String,Integer> map=new HashMap<String, Integer>();
         Map<String,Integer> intersection_map=new HashMap<String, Integer>();
         File file1=new File(filepath1);
@@ -66,16 +66,16 @@ public class wordcount {
         Iterator<Map.Entry<String,Integer>> iterator=intersection_map.entrySet().iterator();
         while (iterator.hasNext()){
             Map.Entry<String,Integer> entry=iterator.next();
-            System.out.println("äº¤é›†çš„å•è¯ï¼š"+entry.getKey()+" ä¸ªæ•°æ˜¯ï¼š"+entry.getValue());
+            System.out.println("½»¼¯µÄµ¥´Ê£º"+entry.getKey()+" ¸öÊıÊÇ£º"+entry.getValue());
         }
     }
-    public int wordcount(Map<String,Integer> map,String lineword){// wordcountç”¨æ¥ç»Ÿè®¡ä¸ªå•è¯ä¸ªæ•°
+    public int wordcount(Map<String,Integer> map,String lineword){// wordcountÓÃÀ´Í³¼Æ¸öµ¥´Ê¸öÊı
         int count=0;
-        StringTokenizer token=new StringTokenizer(lineword);//å°†å­—ç¬¦ä¸²åˆ†è§£æˆæ ‡è®°
+        StringTokenizer token=new StringTokenizer(lineword);//½«×Ö·û´®·Ö½â³É±ê¼Ç
         while (token.hasMoreTokens()){
             count++;
-            String word=token.nextToken(",?.!:\" \"''\n");// æŒ‰ç…§,ç©ºæ ¼ ? . : "" '' \nå»åˆ†å‰²æ–‡æœ¬ï¼Œå¦‚æœæ²¡æœ‰æ˜
-            // ç¡®è¦æ±‚ï¼Œå³æ‹¬å·é‡Œä¸ºç©ºï¼Œåˆ™é»˜è®¤æŒ‰ç…§åˆ¶è¡¨ç¬¦ï¼Œæ–°è¡Œç¬¦å’Œå›è½¦ç¬¦åˆ†å‰²ã€‚
+            String word=token.nextToken(",?.!:\" \"''\n");// °´ÕÕ,¿Õ¸ñ ? . : "" '' \nÈ¥·Ö¸îÎÄ±¾£¬Èç¹ûÃ»ÓĞÃ÷
+            // È·ÒªÇó£¬¼´À¨ºÅÀïÎª¿Õ£¬ÔòÄ¬ÈÏ°´ÕÕÖÆ±í·û£¬ĞÂĞĞ·ûºÍ»Ø³µ·û·Ö¸î¡£
             if(map.containsKey(word)){
                 int thisword_count=map.get(word);
                 map.put(word,thisword_count+1);
@@ -103,8 +103,8 @@ public class wordcount {
     }
     public static void main(String[] args){
         wordcount wordcount=new wordcount();
-        wordcount.word("E:/åŒ—å¤§è½¯å¾®/javaè¯¾ç¨‹/text1.txt","E:/åŒ—å¤§è½¯å¾®/javaè¯¾ç¨‹/text2.txt");
+        wordcount.word("E:/±±´óÈíÎ¢/java¿Î³Ì/text1.txt","E:/±±´óÈíÎ¢/java¿Î³Ì/text2.txt");
         System.out.println("---------------------------");
-        wordcount.intersection_word("E:/åŒ—å¤§è½¯å¾®/javaè¯¾ç¨‹/text1.txt", "E:/åŒ—å¤§è½¯å¾®/javaè¯¾ç¨‹/text2.txt");
+        wordcount.intersection_word("E:/±±´óÈíÎ¢/java¿Î³Ì/text1.txt", "E:/±±´óÈíÎ¢/java¿Î³Ì/text2.txt");
     }
 }
