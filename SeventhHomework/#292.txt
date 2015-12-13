@@ -1,0 +1,6 @@
+public class Solution {
+    public boolean canWinNim(int n) {
+        if(n%4==0)return false;//根据列举分析，当以四为倍数时不能获得胜利
+        return true;
+    }
+}
